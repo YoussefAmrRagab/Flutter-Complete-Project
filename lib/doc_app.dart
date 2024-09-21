@@ -21,6 +21,11 @@ class DocApp extends StatelessWidget {
         initialRoute: Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
         theme: ThemeData(
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: ColorsManager.mainBlue,
+            selectionColor: ColorsManager.mainBlue.withOpacity(.3),
+            selectionHandleColor: ColorsManager.mainBlue,
+          ),
           primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.white,
         ),

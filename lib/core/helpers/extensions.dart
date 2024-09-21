@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension Navigation on BuildContext {
   Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
@@ -18,11 +17,4 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
-}
-
-extension Margin on double {
-  SizedBox get margin => SizedBox(
-        height: h,
-        width: w,
-      );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_project/core/helpers/extensions.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theming/styles.dart';
@@ -15,10 +15,10 @@ class DocLogoAndName extends StatelessWidget {
         SvgPicture.asset(
           'assets/svgs/doc_logo.svg',
         ),
-        10.0.margin,
+        10.0.horizontalSpace,
         Text(
           'Docdoc',
-          style: TextStyles.font24Black700Weight,
+          style: TextStyles.font24BlackBold,
         ),
       ],
     );
