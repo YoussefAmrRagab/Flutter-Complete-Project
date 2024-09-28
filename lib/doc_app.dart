@@ -21,6 +21,7 @@ class DocApp extends StatelessWidget {
         initialRoute: Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
         theme: ThemeData(
+          dialogBackgroundColor: Colors.white,
           textSelectionTheme: TextSelectionThemeData(
             cursorColor: ColorsManager.mainBlue,
             selectionColor: ColorsManager.mainBlue.withOpacity(.3),
