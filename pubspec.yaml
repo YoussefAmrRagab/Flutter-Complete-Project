@@ -57,8 +57,12 @@ dependencies:
   flutter_native_splash: ^2.4.1
   # An SVG rendering and widget library
   flutter_svg: ^2.0.10+1
-  # For adapting screen and font size.
+  # For adapting screen and font size
   flutter_screenutil: ^5.9.3
+  # A build system for Dart code generation
+  build_runner: ^2.4.12
+  # To show beautiful dialogs
+  awesome_dialog: ^3.2.1
 
 dev_dependencies:
   flutter_test:

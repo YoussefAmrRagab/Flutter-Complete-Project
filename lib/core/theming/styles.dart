@@ -141,4 +141,10 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: Colors.white,
   );
+
+  static TextStyle font18RedMedium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.red,
+  );
 }
