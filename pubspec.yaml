@@ -63,6 +63,8 @@ dependencies:
   build_runner: ^2.4.12
   # To show beautiful dialogs
   awesome_dialog: ^3.2.1
+  # Create toast messages
+  fluttertoast: ^8.2.8
 
 dev_dependencies:
   flutter_test:

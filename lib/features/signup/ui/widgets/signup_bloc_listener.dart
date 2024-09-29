@@ -2,17 +2,17 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_project/core/helpers/extensions.dart';
-import 'package:flutter_complete_project/core/routing/routes.dart';
 
-import '../../logic/login_cubit.dart';
-import '../../logic/login_state.dart';
+import '../../../../core/routing/routes.dart';
+import '../../logic/signup_cubit.dart';
+import '../../logic/signup_state.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class SignupBlocListener extends StatelessWidget {
+  const SignupBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit, LoginState>(
+    return BlocListener<SignupCubit, SignupState>(
       listenWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       listener: (context, state) {
@@ -20,11 +20,16 @@ class LoginBlocListener extends StatelessWidget {
           loading: () {
             context.showLoadingDialog();
           },
-          success: (data) {
+          success: (signupResponse) {
             context.pop();
-            context.pushNamedAndRemoveUntil(
-              Routes.homeScreen,
-              predicate: (_) => false,
+            context.showCustomDialog(
+              title: 'Sign Up Successful',
+              error: 'Congratulations, you have signed up successfully!',
+              dialogType: DialogType.success,
+              btnOkText: 'Continue',
+              btnOkOnPress: () {
+                context.pushNamed(Routes.loginScreen);
+              },
             );
           },
           error: (message) {
