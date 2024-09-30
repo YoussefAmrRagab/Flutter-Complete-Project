@@ -8,6 +8,8 @@ import 'package:flutter_complete_project/features/login/ui/login_screen.dart';
 import 'package:flutter_complete_project/features/onboarding/ui/onboarding_screen.dart';
 import 'package:flutter_complete_project/features/signup/ui/signup_screen.dart';
 
+import '../../features/signup/logic/signup_cubit.dart';
+
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     //this arguments to be passed in any screen like this ( arguments as ClassName )
@@ -27,7 +29,10 @@ class AppRouter {
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
-          builder: (context) => const SignupScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<SignupCubit>(),
+            child: const SignupScreen(),
+          ),
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
