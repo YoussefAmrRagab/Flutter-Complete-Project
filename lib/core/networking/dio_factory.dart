@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_complete_project/core/helpers/constants.dart';
+import 'package:flutter_complete_project/core/helpers/shared_pref_helper.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -7,7 +9,7 @@ class DioFactory {
 
   static Dio? dio;
 
-  static Dio getDio() {
+  static Future<Dio> getDio() async {
     Duration timeOut = const Duration(seconds: 30);
 
     if (dio == null) {
@@ -15,11 +17,23 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
+      await addDioHeader();
       addDioInterceptor();
       return dio!;
     } else {
       return dio!;
     }
+  }
+
+  static Future<void> addDioHeader() async {
+    dio?.options.headers['Accept'] = 'application/json';
+    await setTokenToHeader(
+      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken),
+    );
+  }
+
+  static Future<void> setTokenToHeader(String token) async {
+    dio?.options.headers['Authorization'] = 'Bearer $token';
   }
 
   static void addDioInterceptor() {

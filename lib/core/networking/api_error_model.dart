@@ -5,13 +5,13 @@ part 'api_error_model.g.dart';
 @JsonSerializable()
 class ApiErrorModel {
   int? code;
-  String message;
+  String? message;
   @JsonKey(name: 'data')
   dynamic errorDetails;
 
   ApiErrorModel({
     this.code,
-    this.message = 'Some thing went wrong..! Please try again.',
+    this.message,
     this.errorDetails,
   });
 
@@ -27,7 +27,7 @@ class ApiErrorModel {
 
     return ApiErrorModel(
       code: json['code'] ?? 'Unknown Code',
-      message: json['message'] ?? 'Unknown Error',
+      message: json['message'] ?? 'Some thing went wrong..! Please try again.',
       errorDetails: errorDetails,
     );
   }
