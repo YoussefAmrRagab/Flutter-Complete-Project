@@ -4,10 +4,12 @@ import 'package:flutter_complete_project/core/routing/routes.dart';
 import 'package:flutter_complete_project/core/theming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DocApp extends StatelessWidget {
+import 'core/helpers/constants.dart';
+
+class DocdocApp extends StatelessWidget {
   final AppRouter appRouter;
 
-  const DocApp({super.key, required this.appRouter});
+  const DocdocApp({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +18,30 @@ class DocApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        title: 'Doc App',
+        title: 'Docdoc App',
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: hasLaunchedBefore
+            ? isLoggedInUser
+                ? Routes.homeScreen
+                : Routes.loginScreen
+            : Routes.onBoardingScreen,
         onGenerateRoute: appRouter.generateRoute,
         theme: ThemeData(
           dialogBackgroundColor: Colors.white,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              overlayColor: WidgetStatePropertyAll(
+                ColorsManager.mainBlue.withOpacity(.1),
+              ),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+              overlayColor: WidgetStatePropertyAll(
+                ColorsManager.mainBlue.withOpacity(.1),
+              ),
+            ),
+          ),
           textSelectionTheme: TextSelectionThemeData(
             cursorColor: ColorsManager.mainBlue,
             selectionColor: ColorsManager.mainBlue.withOpacity(.3),

@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theming/styles.dart';
 
-class DocLogoAndName extends StatelessWidget {
-  const DocLogoAndName({super.key});
+class DocDocLogoAndName extends StatelessWidget {
+  const DocDocLogoAndName({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DocLogoAndName extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(
-          'assets/svgs/doc_logo.svg',
+          'assets/svgs/docdoc_logo.svg',
         ),
         10.0.horizontalSpace,
         Text(

@@ -89,5 +89,5 @@ extension ToastMessage on String {
 extension ErrorHandlerMassage on ErrorHandler {
   String get message => apiErrorModel.errorDetails != null
       ? apiErrorModel.errorDetails.toString()
-      : apiErrorModel.message;
+      : apiErrorModel.message!;
 }

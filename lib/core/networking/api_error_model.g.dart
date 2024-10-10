@@ -9,8 +9,7 @@ part of 'api_error_model.dart';
 ApiErrorModel _$ApiErrorModelFromJson(Map<String, dynamic> json) =>
     ApiErrorModel(
       code: (json['code'] as num?)?.toInt(),
-      message: json['message'] as String? ??
-          'Some thing went wrong..! Please try again.',
+      message: json['message'] as String?,
       errorDetails: json['data'],
     );
 
