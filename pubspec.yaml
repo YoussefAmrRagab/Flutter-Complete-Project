@@ -73,8 +73,10 @@ dependencies:
   loading_animation_widget: ^1.3.0
   # To reading and writing simple key-value pairs in local storage
   shared_preferences: ^2.3.2
-  # Provides API to store data in secure storage.
+  # Provides API to store data in secure storage
   flutter_secure_storage: ^9.2.2
+  # Provides an easy way to add shimmer effect
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

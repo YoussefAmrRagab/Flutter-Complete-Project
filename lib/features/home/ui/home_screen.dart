@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theming/styles.dart';
 import '../logic/home_cubit.dart';
 import 'widgets/doctor_blue_container.dart';
+import 'widgets/doctors/doctors_bloc_builder.dart';
 import 'widgets/home_top_bar.dart';
-import 'widgets/specializations_and_doctors.dart';
+import 'widgets/specializations/specializations_bloc_builder.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,7 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
               24.verticalSpace,
               buildDoctorSpecialitiesTextBar(),
               16.verticalSpace,
-              const SpecializationsAndDoctors(),
+              const SpecializationsBlocBuilder(),
+              8.verticalSpace,
+              const DoctorsBlocBuilder(),
             ],
           ),
         ),

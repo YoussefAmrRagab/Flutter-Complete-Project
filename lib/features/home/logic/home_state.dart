@@ -8,6 +8,7 @@ part 'home_state.freezed.dart';
 class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
   const factory HomeState.loading() = Loading;
-  const factory HomeState.success(SpecializationsResponse response) = Success;
+  const factory HomeState.specializations(List<Specialization> specializations) = Specializations;
+  const factory HomeState.doctors(List<Doctor> doctors) = Doctors;
   const factory HomeState.error(String error) = Error;
 }
