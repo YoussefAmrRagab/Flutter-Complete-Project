@@ -20,7 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
         filterDoctorsBySpecializationId(specializations.first.id);
         emit(HomeState.specializations(specializations));
       },
-      failure: (error) => emit(HomeState.error(error.msg)),
+      failure: (error) => emit(HomeState.error(error.message)),
     );
   }
 

@@ -32,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
         await saveUserToken(data.userData!.token);
         emit(LoginState.success(data));
       },
-      failure: (error) => emit(LoginState.error(error.message)),
+      failure: (error) => emit(LoginState.error(error.msg)),
     );
   }
 
