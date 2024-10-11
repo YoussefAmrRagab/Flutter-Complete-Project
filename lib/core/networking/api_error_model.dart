@@ -7,41 +7,51 @@ class ApiErrorModel {
   int? code;
   String? message;
   @JsonKey(name: 'data')
-  dynamic errorDetails;
+  dynamic errors;
 
   ApiErrorModel({
     this.code,
     this.message,
-    this.errorDetails,
+    this.errors,
   });
 
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) {
-    dynamic errorDetails;
+    dynamic errorsMessage;
 
-    if (json['data'] is Map) {
-      errorDetails = ErrorDetails.fromJson(json['data']);
-    } else if (json['data'] is List) {
-      final errors = json['data'] as List;
-      errorDetails = errors.isEmpty ? null : errors.join(', ');
+    switch (json['data']) {
+      case Map _:
+        errorsMessage = Errors.fromJson(json['data']);
+        break;
+      case List _:
+        final errors = json['data'] as List;
+        errorsMessage = errors.isEmpty ? null : errors.join(', ');
+        break;
+      case String _:
+        final errors = json['data'] as String;
+        errorsMessage = errors.isEmpty ? null : errors;
+        break;
+      default:
+        errorsMessage = null;
+        break;
     }
 
     return ApiErrorModel(
       code: json['code'] ?? 'Unknown Code',
-      message: json['message'] ?? 'Some thing went wrong..! Please try again.',
-      errorDetails: errorDetails,
+      message: json['message'] ?? 'Something went wrong..! Please try again.',
+      errors: errorsMessage,
     );
   }
 }
 
 @JsonSerializable()
-class ErrorDetails {
+class Errors {
   List<String>? name;
   List<String>? email;
   List<String>? phone;
   List<String>? gender;
   List<String>? password;
 
-  ErrorDetails({
+  Errors({
     this.name,
     this.email,
     this.phone,
@@ -49,11 +59,10 @@ class ErrorDetails {
     this.gender,
   });
 
-  factory ErrorDetails.fromJson(Map<String, dynamic> json) =>
-      _$ErrorDetailsFromJson(json);
+  factory Errors.fromJson(Map<String, dynamic> json) => _$ErrorsFromJson(json);
 
-  @override
-  String toString() {
+  /// Returns a [String] containing all the error message
+  String get message {
     String errorMsg(List<String>? field) {
       return (field != null && field.isNotEmpty) ? field.join(', ') : '';
     }

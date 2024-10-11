@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../networking/api_error_handler.dart';
+import '../networking/api_error_model.dart';
 import '../theming/colors.dart';
 import '../theming/styles.dart';
 
@@ -86,8 +86,10 @@ extension ToastMessage on String {
       );
 }
 
-extension ErrorHandlerMassage on ErrorHandler {
-  String get message => apiErrorModel.errorDetails != null
-      ? apiErrorModel.errorDetails.toString()
-      : apiErrorModel.message!;
+extension ErrorHandlerMessage on ApiErrorModel {
+  String get msg => errors != null
+      ? errors is Errors
+          ? (errors as Errors).message
+          : errors as String
+      : message!;
 }
